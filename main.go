@@ -22,6 +22,23 @@ func lenAndUpper(name string) (int, string) {
 	return len(name), strings.ToUpper(name)
 }
 
+/* naked return
+ * return 할 variable을 명시 하지 않아도 된다.
+ * return 타입에 return할 변수명을 적어야한다.
+ * return을 명시하는게 좋지 않을까?
+ */
+func nakedLenAndUpper(name string) (nakedTotalLength int, nakedUpperName string) {
+	// defer 함수가 return 후 실행합니다.
+	defer fmt.Println("done1")
+	defer fmt.Println("done2")
+	defer fmt.Println("done3")
+	defer fmt.Println("done4")
+	nakedTotalLength = len(name)
+	nakedUpperName = strings.ToUpper(name)
+
+	return
+}
+
 // 연속으로된 param을 array 형태로 받는다.
 func repeatMe(words ...string) {
 	fmt.Println(words)
@@ -44,9 +61,9 @@ func main() {
 	otherOtherName := "kim"  // 이 문법은 func 내부에서만 가능, 변수에서만 적용 가능
 	otherOtherName = "false" // value값이 다른 타입 false등 다른 타입이면 오류. 위에서 string 으로 선언되어있음.
 	otherName = "aaa"
-	fmt.Println(name, otherName, otherOtherName)
+	fmt.Println("variants", name, otherName, otherOtherName)
 
-	fmt.Println(multiply(2, 2), otherMultiply(2, 2))
+	fmt.Println("func", multiply(2, 2), otherMultiply(2, 2))
 
 	totalLength, upperName := lenAndUpper("yrkim")
 	fmt.Println(totalLength, upperName)
@@ -54,4 +71,7 @@ func main() {
 	fmt.Println(totalOtherLength)
 
 	repeatMe("a", "bb", "ccc", "dddd", "EEEEE")
+
+	nakedTotalLength, nakedUpperName := nakedLenAndUpper("yrkim")
+	fmt.Println("naked func", nakedTotalLength, nakedUpperName)
 }
