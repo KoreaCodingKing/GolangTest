@@ -16,4 +16,13 @@ func main() {
 	// Not working
 	// sayBye not exported by package something
 	// something.sayBye()
+
+	// 변수/상수 이름 type = value
+	const name string = "yrkim"
+
+	var otherName string = "kim"
+	otherOtherName := "kim"  // 이 문법은 func 내부에서만 가능, 변수에서만 적용 가능
+	otherOtherName = "false" // value값이 다른 타입 false등 다른 타입이면 오류. 위에서 string 으로 선언되어있음.
+	otherName = "aaa"
+	fmt.Println(name, otherName, otherOtherName)
 }
