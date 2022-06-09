@@ -29,6 +29,7 @@ func lenAndUpper(name string) (int, string) {
  */
 func nakedLenAndUpper(name string) (nakedTotalLength int, nakedUpperName string) {
 	// defer 함수가 return 후 실행합니다.
+	// 아래 defer부터 역순으로 실행한다.
 	defer fmt.Println("done1")
 	defer fmt.Println("done2")
 	defer fmt.Println("done3")
@@ -42,6 +43,22 @@ func nakedLenAndUpper(name string) (nakedTotalLength int, nakedUpperName string)
 // 연속으로된 param을 array 형태로 받는다.
 func repeatMe(words ...string) {
 	fmt.Println(words)
+}
+
+func superAdd(numbers ...int) int {
+	// array에 loop를 해줌
+	for index, number := range numbers {
+		fmt.Println(index, number)
+	}
+	// index 생략
+	total := 0
+	for _, number := range numbers {
+		total += number
+	}
+	for i := 0; i < len(numbers); i++ {
+		fmt.Println(numbers[i])
+	}
+	return total
 }
 
 /* 만약 function을 다른 모듈로 export하고 싶가면 Println 처럼 대문자 사용한다.
@@ -74,4 +91,7 @@ func main() {
 
 	nakedTotalLength, nakedUpperName := nakedLenAndUpper("yrkim")
 	fmt.Println("naked func", nakedTotalLength, nakedUpperName)
+
+	result := superAdd(1, 2, 3, 4, 5, 6, 7)
+	fmt.Println("result", result)
 }
