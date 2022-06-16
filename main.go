@@ -4,8 +4,9 @@ package main
 
 import (
 	"fmt"
-	"goTest/something"
 	"strings"
+
+	"goTest/something"
 )
 
 /* 각 param마다 타입을 지정해줘야한다. 지정하지 않으면 undefined.
@@ -14,6 +15,7 @@ import (
 func otherMultiply(a, b int) int {
 	return a * b
 }
+
 func multiply(a int, b int) int {
 	return a * b
 }
@@ -61,6 +63,25 @@ func superAdd(numbers ...int) int {
 	return total
 }
 
+func canIDrink(age int) bool {
+	/* warning: should use return age >= 18
+	 * 아마도 더 간결하게 쓰라고 경고주는 것 같다.
+	 * 아무리 warning에 대한 걸 찾아봐도 안나와서 포기.
+	 */
+	// if age < 18 {
+	// 	return false
+	// }
+	// return true
+
+	// return age >= 18
+
+	// 변수 koreanAge 생성, 세미콜론 오른쪽에서 변수를 만들고 있다.
+	if koreanAge := age + 2; koreanAge < 18 {
+		return false
+	}
+	return true
+}
+
 /* 만약 function을 다른 모듈로 export하고 싶가면 Println 처럼 대문자 사용한다.
  */
 func main() {
@@ -94,4 +115,6 @@ func main() {
 
 	result := superAdd(1, 2, 3, 4, 5, 6, 7)
 	fmt.Println("result", result)
+
+	fmt.Println(canIDrink(16))
 }
