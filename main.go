@@ -73,6 +73,7 @@ func canIDrink(age int) bool {
 	// }
 	// return true
 
+	// 이런식으로 바로 return 하도록 하자.
 	// return age >= 18
 
 	// 변수 koreanAge 생성, 세미콜론 오른쪽에서 변수를 만들고 있다.
@@ -80,6 +81,36 @@ func canIDrink(age int) bool {
 		return false
 	}
 	return true
+}
+
+func canDrink(age int) bool {
+	// if 안하고
+	// switch age {
+	// 	case 10:
+	// 		return false
+	// 	case 18:
+	// 		return true
+	// }
+	// return false
+
+	// if (){} else if(){}
+	// switch {
+	// case age < 10:
+	// 	return false
+	// case age == 18:
+	// 	return true
+	// case age > 50:
+	// 	return false
+	// return false
+	// }
+
+	switch koreanAge := age + 2; koreanAge {
+	case 10:
+		return false
+	case 18:
+		return true
+	}
+	return false
 }
 
 /* 만약 function을 다른 모듈로 export하고 싶가면 Println 처럼 대문자 사용한다.
